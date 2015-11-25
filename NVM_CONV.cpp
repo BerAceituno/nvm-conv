@@ -1,6 +1,6 @@
 /*********************************************************************/
 /* File: NVM_CONV.cpp                                                */
-/* Last Edition: 18/11/2015, 00:57 PM.                               */
+/* Last Edition: 24/11/2015, 09:03 PM.                               */
 /*********************************************************************/
 /* Programmed by:                                                    */
 /* Bernardo Aceituno C                                               */
@@ -19,7 +19,8 @@ int main(int argc, char* argv[]){
 
     int cam = 0;
     int mod = 0;
-    
+    int comma = 1;
+
     if(string(argv[1]) == "-h"){
         cout << "Help:" << endl;
         cout << "the following is a Conversion software for N-View Match (.nvm) point clouds" << endl;
@@ -29,6 +30,7 @@ int main(int argc, char* argv[]){
         cout << "           -o .ply model output file." << endl;
         cout << "           -cm .csv model output file." << endl;
         cout << "           -cc .csv cameras info output file." << endl;
+        cout << "           -t use tabs in .csv files as separation." << endl;
         cout << "   - Example:" << endl;
         cout << "           $ ./NVM_CONV -i model.nvm -o output.ply -cc camera_csv.csv -cm model_csv.csv" << endl;
 
@@ -61,7 +63,13 @@ int main(int argc, char* argv[]){
             cam = 1;
             csv_camera = argv[i+1];
         }
+        f(argument == "-t") comma = 0;
     }
+
+    string cs;
+
+    if(comma == 1) cs = ", ";
+    else cs = "\t";
 
     ifstream in;
     ofstream out;
@@ -90,15 +98,15 @@ int main(int argc, char* argv[]){
     if(ncam <= 1) return false; 
 
     for(int i = 0; i < ncam; ++i){
-        float f, r; float wxyz[3]; float center[3];
+        float f, r; float wxyz[4]; float center[3];
         //reads the information for each camera
-        in >> buffer >> f >> wxyz[0] >> wxyz[1] >> wxyz[2] >> center[0] >> center[1] >> center[2] >> r; 
+        in >> buffer >> f >> wxyz[0] >> wxyz[1] >> wxyz[2] >> wxyz[3] >> center[0] >> center[1] >> center[2] >> r; 
         //skips the rest of the line
         getline(in, buffer);
         //prints the information of the cameras if the input is given
-        if(cam == 1) outcams << f << ',' << ' ' << wxyz[0] << ',' << ' ' << wxyz[1] << ',' << ' ' 
-                             << wxyz[2] << ',' << ' ' << center[0] << ',' << ' ' << center[1] 
-                             << ',' << ' ' << center[2] << ',' << ' ' << r << '\n';
+        if(cam == 1) outcams << f << cs << wxyz[0] << cs << wxyz[1] << cs 
+                             << wxyz[2] << cs << wxyz[3] << cs << center[0] << cs 
+                             << center[1] << cs << center[2] << cs << r << '\n';
     }
 
     // read the number of points.
@@ -128,8 +136,8 @@ int main(int argc, char* argv[]){
         out << pt[0] << ' ' << pt[1] << ' ' << pt[2] << ' '
             << cc[0] << ' ' << cc[1] << ' ' << cc[2] << '\n';
 
-        if(mod == 1) outmod << pt[0] << ',' << ' ' << pt[1] << ',' << ' ' << pt[2] << ',' <<  ' '
-                            << cc[0] << ',' << ' ' << cc[1] << ',' << ' ' << cc[2] << '\n';
+        if(mod == 1) outmod << pt[0] << cs << pt[1] << cs << pt[2] << ',' <<  ' '
+                            << cc[0] << cs << cc[1] << cs << cc[2] << '\n';
     }
 
     cout << "Conversion done!" << endl;
