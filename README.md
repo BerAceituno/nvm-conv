@@ -45,7 +45,7 @@ The software is ran via terminal by locating in the build folder and entering:
 ```
 
 where the inputs represent:
-
+...
   1. -i    :   an .NVM pointcloud with camera poses.
   
   2. -o    :   Output .PLY file with the pointcloud (Note the output directory must be already created).
@@ -55,6 +55,6 @@ where the inputs represent:
   5. -cc   :   (optional) Output .CSV file with the camera poses in the point cloud for visual odometry (includes <focal length> <Centroid WXYZ> <XYZ> <radial distortion>). 
 
   6. -t    :   (optional) if given the separatio for the .CSV files will be a tab.
-  
+...  
 
 **Distributed under an MIT License**
