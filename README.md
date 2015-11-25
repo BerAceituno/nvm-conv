@@ -17,7 +17,7 @@ And has been succesfully tested on Ubuntu 14.04 and 12.04, no GPU required.
   
   ```
     $ sudo apt-get install build-essential
-    $ sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+    $ sudo apt-get install cmake
   ```
 
 * **Cloning the repository and building**
@@ -54,7 +54,7 @@ where the inputs represent:
   
   5. -cc   :   (optional) Output .CSV file with the camera poses in the point cloud for visual odometry (includes <focal length> <Centroid WXYZ> <XYZ> <radial distortion>). 
 
-  6. -t    :   (optional) if given the separatio for the .CSV files will be a tab.
+  6. -t    :   (optional) if given the separation for the .CSV files will be a tab.
 ```
 
 **Distributed under an MIT License**
