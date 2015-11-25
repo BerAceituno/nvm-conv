@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
 
     int cam = 0;
     int mod = 0;
-
+    
     if(string(argv[1]) == "-h"){
         cout << "Help:" << endl;
         cout << "the following is a Conversion software for N-View Match (.nvm) point clouds" << endl;
