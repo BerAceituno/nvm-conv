@@ -41,7 +41,7 @@ And has been succesfully tested on Ubuntu 14.04 and 12.04, no GPU required.
 The software is ran via terminal by locating in the build folder and entering:
 
 ```
-  $ ./Undistort -i  <input model .nvm> -o <output .PLY model> -cm <output .CSV model> -cc <output .CSV camera poses> -t <.CSV uses tabs instead of commas>
+  $ ./NVM_CONV -i  <input model .nvm> -o <output .PLY model> -cm <output .CSV model> -cc <output .CSV camera poses> -t <.CSV uses tabs instead of commas>
 ```
 
 where the inputs represent:
