@@ -17,7 +17,7 @@ And has been succesfully tested on Ubuntu 14.04 and 12.04, no GPU required.
   
   ```
     $ sudo apt-get install build-essential
-    $ sudo apt-get install cmake
+    $ sudo apt-get install cmake git
   ```
 
 * **Cloning the repository and building**
