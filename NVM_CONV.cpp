@@ -63,7 +63,7 @@ int main(int argc, char* argv[]){
             cam = 1;
             csv_camera = argv[i+1];
         }
-        f(argument == "-t") comma = 0;
+        if(argument == "-t") comma = 0;
     }
 
     string cs;
