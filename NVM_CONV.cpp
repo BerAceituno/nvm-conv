@@ -37,7 +37,7 @@ int main(int argc, char* argv[]){
         return 0;
     }
 
-    if(argc < 5 || argc > 9){
+    if(argc < 5 || argc > 10){
         cout << "ERROR: wrong number of arguments!" << endl;
         return -1;
     }
