@@ -1,5 +1,5 @@
 # NVM - Converter
-NVM model format converter software developed for the U.S.B. Mechatronics Group.
+NVM model format converter module developed for the U.S.B. Mechatronics Group.
 
 # Requirements
 
