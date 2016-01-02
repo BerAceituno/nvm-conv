@@ -1,6 +1,6 @@
 /*********************************************************************/
 /* File: NVM_CONV.cpp                                                */
-/* Last Edition: 02/01/2016, 02:07 AM.                               */
+/* Last Edition: 24/11/2015, 09:03 PM.                               */
 /*********************************************************************/
 /* Programmed by:                                                    */
 /* Bernardo Aceituno C                                               */
@@ -57,7 +57,7 @@ int main(int argc, char* argv[]){
             string ext = string(argv[i+1]); 
             if(ext == "ply") ply = 1;
             else if(ext == "csv") mod = 1;
-            else if(ext == "ocd") pcd = 1;
+            else if(ext == "pcd") pcd = 1;
             else return -1;
         }
         if(argument == "-cc"){
@@ -160,7 +160,7 @@ int main(int argc, char* argv[]){
                             << "SIZE 4 4 4\n"
                             << "TYPE F F F\n"
                             << "COUNT 1 1 1\n"
-                            << "WIDTH " << npoint << " #unorganized dataset\n"
+                            << "WIDTH " << npoint << "\n"
                             << "HEIGHT 1\n"
                             << "VIEWPOINT 0 0 0 1 0 0 0\n"
                             << "POINTS " << npoint << "\n"
@@ -178,7 +178,7 @@ int main(int argc, char* argv[]){
             if(ply == 1) outply << pt[0] << ' ' << pt[1] << ' ' << pt[2] << ' '
                                 << cc[0] << ' ' << cc[1] << ' ' << cc[2] << '\n';
 
-            if(mod == 1) outmod << pt[0] << cs << pt[1] << cs << pt[2] << ',' <<  ' '
+            if(mod == 1) outmod << pt[0] << cs << pt[1] << cs << pt[2] << cs
                                 << cc[0] << cs << cc[1] << cs << cc[2] << '\n';
 
             if(pcd == 1) outpcd << pt[0] << ' ' << pt[1] << ' ' << pt[2] << '\n';
