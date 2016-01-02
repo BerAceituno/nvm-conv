@@ -1,6 +1,6 @@
 /*********************************************************************/
 /* File: NVM_CONV.cpp                                                */
-/* Last Edition: 24/11/2015, 09:03 PM.                               */
+/* Last Edition: 02/01/2016, 02:07 AM.                               */
 /*********************************************************************/
 /* Programmed by:                                                    */
 /* Bernardo Aceituno C                                               */
@@ -30,7 +30,7 @@ int main(int argc, char* argv[]){
         cout << "   - Input:" << endl;
         cout << "     the arguments should ve given as:" << endl;
         cout << "           -i  .nvm reconstruction input file." << endl;
-        cout << "           -f  model output format (ply, csv of pcd)" << endl;
+        cout << "           -f  model output format (ply, csv or pcd)" << endl;
         cout << "           -cc .csv cameras info output file." << endl;
         cout << "           -t  use tabs in .csv files as separation." << endl;
         cout << "   - Example:" << endl;
@@ -57,6 +57,7 @@ int main(int argc, char* argv[]){
             string ext = string(argv[i+1]); 
             if(ext == "ply") ply = 1;
             else if(ext == "csv") mod = 1;
+            else if(ext == "ocd") pcd = 1;
             else return -1;
         }
         if(argument == "-cc"){
@@ -74,6 +75,7 @@ int main(int argc, char* argv[]){
     ofstream outply;
     ofstream outcams;
     ofstream outmod;
+    ofstream outpcd;
 
     in.open(nvm_model,ios::in);
 
@@ -94,9 +96,10 @@ int main(int argc, char* argv[]){
         ostringstream output_name_ply;
         ostringstream output_name_csv;
         ostringstream output_name_cam;
+        ostringstream output_name_pcd;
 
         if(dis == 1){
-            if(ply == 1 && mod == 0){
+            if(ply == 1){
             outply.close();
             output_name_ply << filename << "_" << (int) MODELN << ".ply";
             outply.open(output_name_ply.str().c_str());
@@ -105,6 +108,11 @@ int main(int argc, char* argv[]){
                 outmod.close();
                 output_name_csv << filename << "_" << (int) MODELN << ".csv";
                 outmod.open(output_name_csv.str().c_str());
+            }
+            if(pcd == 1){
+                outpcd.close();
+                output_name_pcd << filename << "_" << (int) MODELN << ".pcd";
+                outpcd.open(output_name_pcd.str().c_str());   
             }
             if(cam == 1){
                 outcams.close();
@@ -145,7 +153,19 @@ int main(int argc, char* argv[]){
                             << "property uchar diffuse_green\n"
                             << "property uchar diffuse_blue\n"
                             << "end_header\n";
-      
+
+        if(pcd == 1) outpcd << "# .PCD v.7 - Point Cloud Data file format\n"
+                            << "VERSION .7\n"
+                            << "FIELDS x y z\n"
+                            << "SIZE 4 4 4\n"
+                            << "TYPE F F F\n"
+                            << "COUNT 1 1 1\n"
+                            << "WIDTH " << npoint << " #unorganized dataset\n"
+                            << "HEIGHT 1\n"
+                            << "VIEWPOINT 0 0 0 1 0 0 0\n"
+                            << "POINTS " << npoint << "\n"
+                            << "DATA ascii\n";
+
         // Load all the vertices
         for(int i = 0; i < npoint; ++i){
             float pt[3]; int cc[3];
@@ -160,6 +180,8 @@ int main(int argc, char* argv[]){
 
             if(mod == 1) outmod << pt[0] << cs << pt[1] << cs << pt[2] << ',' <<  ' '
                                 << cc[0] << cs << cc[1] << cs << cc[2] << '\n';
+
+            if(pcd == 1) outpcd << pt[0] << ' ' << pt[1] << ' ' << pt[2] << '\n';
         }
 
         MODELN += 1;
