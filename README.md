@@ -48,9 +48,9 @@ where the inputs represent:
 ```
   1. -i    :   an .NVM pointcloud.
   
-  2. -f    :   Output fortam .PLY or .CSV (including XYZ and RGB) file with the pointcloud (Note the output directory must be already created).
+  2. -f    :   Output format .PLY, .PCD (without color information) or .CSV (including XYZ and RGB) file with the pointcloud (Note the output directory must be already created).
   
-  3. -cc   :   (optional) if given outputs a .CSV file with the camera poses in the point cloud for visual odometry (includes <focal length> <Centroid WXYZ> <XYZ> <radial distortion>). 
+  3. -cc   :   (optional) if given, outputs a .CSV file with the camera poses in the point cloud for visual odometry (includes <focal length> <Quaternion WXYZ> <Center XYZ> <radial distortion>).
 
   4. -t    :   (optional) if given the separation for the .CSV files will be a tab.
 ```
