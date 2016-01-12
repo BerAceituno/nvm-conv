@@ -25,13 +25,13 @@ And has been succesfully tested on Ubuntu 14.04 and 12.04, no GPU required.
   locate the terminal in your workspace folder and enter:
   
   ```
-    $ git clone https://github.com/BerAceituno/nvm-conv.git
+    $ git clone https://github.com/BerAceituno/pcl-conv.git
   ```
   
   locate the terminal in the source code folder and build by entering the following commands:
   
   ```
-    $ cd nvm-conv
+    $ cd pcl-conv
     $ cmake . 
     $ make
   ```
@@ -41,7 +41,7 @@ And has been succesfully tested on Ubuntu 14.04 and 12.04, no GPU required.
 The software is ran via terminal by locating in the build folder and entering:
 
 ```
-  $ ./pcl-conv -i  <input model .nvm or .ply> -f <output format -cc <output camera poses> -t <.CSV uses tabs instead of commas>
+  $ ./pcl-conv -i  <input model .nvm or .ply> -f <output format> -cc <output camera poses> -t <.CSV uses tabs instead of commas>
 ```
 
 where the inputs represent:
