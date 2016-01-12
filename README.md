@@ -1,5 +1,5 @@
-# NVM - Converter
-NVM model format converter module developed for the U.S.B. Mechatronics Group.
+# PCL - Converter
+Point Cloud format converter module developed for the U.S.B. Mechatronics Group.
 
 # Requirements
 
@@ -41,7 +41,7 @@ And has been succesfully tested on Ubuntu 14.04 and 12.04, no GPU required.
 The software is ran via terminal by locating in the build folder and entering:
 
 ```
-  $ ./NVM_CONV -i  <input model .nvm> -f <output format -cc <output camera poses> -t <.CSV uses tabs instead of commas>
+  $ ./pcl-conv -i  <input model .nvm or .ply> -f <output format -cc <output camera poses> -t <.CSV uses tabs instead of commas>
 ```
 
 where the inputs represent:
